@@ -5,4 +5,8 @@ defmodule ToyRobotTest do
   test "greets the world" do
     assert ToyRobot.hello() == :world
   end
+
+  test "place command" do
+    assert ToyRobot.place() == %ToyRobot{facing: "NORTH", position: []}
+  end
 end

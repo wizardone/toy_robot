@@ -1,6 +1,12 @@
 # ToyRobot
 
-**TODO: Add description**
+Create an application that can read in commands of the following form:
+
+PLACE X,Y,F
+MOVE
+LEFT
+RIGHT
+REPORT
 
 ## Installation
 
@@ -18,4 +24,3 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/toy_robot](https://hexdocs.pm/toy_robot).
-

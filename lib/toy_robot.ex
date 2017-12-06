@@ -1,18 +1,10 @@
 defmodule ToyRobot do
-  @moduledoc """
-  Documentation for ToyRobot.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> ToyRobot.hello
-      :world
-
-  """
+  defstruct [position: [], facing: "NORTH"]
   def hello do
     :world
+  end
+
+  def place do
+    %ToyRobot{}
   end
 end
