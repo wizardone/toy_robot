@@ -9,7 +9,7 @@ defmodule ToyRobot do
   end
 
   def move do
-    
+
   end
 
   def left do
@@ -20,7 +20,8 @@ defmodule ToyRobot do
 
   end
 
-  def report do
-
+  def report(robot) do
+    %ToyRobot{position: [x, y], facing: facing} = robot
+    {x, y, facing}
   end
 end
