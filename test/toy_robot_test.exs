@@ -14,4 +14,14 @@ defmodule ToyRobotTest do
     robot = ToyRobot.place(1, 3, :north)
     assert ToyRobot.report(robot) == {1, 3, :north}
   end
+
+  test "left command" do
+    robot = ToyRobot.place(2, 2, :north)
+    assert ToyRobot.left(robot) == %ToyRobot{facing: :west, position: [2, 2]}
+  end
+
+  test "right command" do
+    robot = ToyRobot.place(2, 2, :north)
+    assert ToyRobot.right(robot) == %ToyRobot{facing: :east, position: [2, 2]}
+  end
 end
