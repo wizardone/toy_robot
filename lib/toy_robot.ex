@@ -1,5 +1,5 @@
 defmodule ToyRobot do
-  defstruct [position: [], facing: "NORTH"]
+  defstruct [position: [], facing: :north]
   def hello do
     :world
   end
@@ -20,8 +20,7 @@ defmodule ToyRobot do
 
   end
 
-  def report(robot) do
-    %ToyRobot{position: [x, y], facing: facing} = robot
+  def report(%ToyRobot{position: [x, y], facing: facing} = robot) do
     {x, y, facing}
   end
 end
