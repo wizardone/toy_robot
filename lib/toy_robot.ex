@@ -10,10 +10,10 @@ defmodule ToyRobot do
 
   def move(%ToyRobot{position: [x, y], facing: facing} = _robot) do
     case facing do
-      :north -> %ToyRobot{position: [x, y + 1], facing: :north}
-      :east  -> %ToyRobot{position: [x + 1, y], facing: :east}
-      :south -> %ToyRobot{position: [x, y - 1], facing: :south}
-      :west  -> %ToyRobot{position: [x - 1, y], facing: :west}
+      :north -> place(x, y + 1, facing)
+      :east  -> place(x + 1, y, facing)
+      :south -> place(x, y - 1, facing)
+      :west  -> place(x - 1, y, facing)
     end
   end
 
@@ -29,12 +29,11 @@ defmodule ToyRobot do
     {x, y, facing}
   end
 
-  defp facings(direction, current_facing) do
+  defp facings(direction, currently_facing) do
     facings = case direction do
       :left  -> %{north: :west, east: :north, south: :east, west: :south}
       :right -> %{north: :east, east: :south, south: :west, west: :north}
     end
-    facings[current_facing]
+    facings[currently_facing]
   end
-
 end

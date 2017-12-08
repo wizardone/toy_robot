@@ -33,4 +33,14 @@ defmodule ToyRobotTest do
                |> ToyRobot.move
     assert position == %ToyRobot{facing: :north, position: [2, 3]}
   end
+
+  test "a whole sequence of commands" do
+    position = ToyRobot.place(2, 3, :north)
+               |> ToyRobot.move
+               |> ToyRobot.move
+               |> ToyRobot.right
+               |> ToyRobot.move
+
+    assert position == %ToyRobot{facing: :east, position: [3, 5]}
+  end
 end
