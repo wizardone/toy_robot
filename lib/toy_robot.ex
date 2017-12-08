@@ -17,25 +17,24 @@ defmodule ToyRobot do
     end
   end
 
-  def left(%ToyRobot{position: [x, y], facing: facing} = _robot) do
-    case facing do
-      :north -> %ToyRobot{position: [x, y], facing: :west}
-      :east  -> %ToyRobot{position: [x, y], facing: :north}
-      :south -> %ToyRobot{position: [x, y], facing: :east}
-      :west  -> %ToyRobot{position: [x, y], facing: :south}
-    end
+  def left(%ToyRobot{facing: facing} = robot) do
+    %ToyRobot{robot | facing: facings(:left, facing)}
   end
 
-  def right(%ToyRobot{position: [x, y], facing: facing} = _robot) do
-    case facing do
-      :north -> %ToyRobot{position: [x, y], facing: :east}
-      :east  -> %ToyRobot{position: [x, y], facing: :south}
-      :south -> %ToyRobot{position: [x, y], facing: :west}
-      :west  -> %ToyRobot{position: [x, y], facing: :north}
-    end
+  def right(%ToyRobot{facing: facing} = robot) do
+    %ToyRobot{robot | facing: facings(:right, facing)}
   end
 
   def report(%ToyRobot{position: [x, y], facing: facing} = _robot) do
     {x, y, facing}
   end
+
+  defp facings(direction, current_facing) do
+    facings = case direction do
+      :left  -> %{north: :west, east: :north, south: :east, west: :south}
+      :right -> %{north: :east, east: :south, south: :west, west: :north}
+    end
+    facings[current_facing]
+  end
+
 end
