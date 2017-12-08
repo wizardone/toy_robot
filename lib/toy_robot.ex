@@ -8,7 +8,7 @@ defmodule ToyRobot do
     %ToyRobot{position: [x, y], facing: facing}
   end
 
-  def move(%ToyRobot{position: [x, y], facing: facing} = robot) do
+  def move(%ToyRobot{position: [x, y], facing: facing} = _robot) do
     case facing do
       :north -> %ToyRobot{position: [x, y + 1], facing: :north}
       :east  -> %ToyRobot{position: [x + 1, y], facing: :east}
@@ -17,7 +17,7 @@ defmodule ToyRobot do
     end
   end
 
-  def left(%ToyRobot{position: [x, y], facing: facing} = robot) do
+  def left(%ToyRobot{position: [x, y], facing: facing} = _robot) do
     case facing do
       :north -> %ToyRobot{position: [x, y], facing: :west}
       :east  -> %ToyRobot{position: [x, y], facing: :north}
@@ -26,7 +26,7 @@ defmodule ToyRobot do
     end
   end
 
-  def right(%ToyRobot{position: [x, y], facing: facing} = robot) do
+  def right(%ToyRobot{position: [x, y], facing: facing} = _robot) do
     case facing do
       :north -> %ToyRobot{position: [x, y], facing: :east}
       :east  -> %ToyRobot{position: [x, y], facing: :south}
@@ -35,7 +35,7 @@ defmodule ToyRobot do
     end
   end
 
-  def report(%ToyRobot{position: [x, y], facing: facing} = robot) do
+  def report(%ToyRobot{position: [x, y], facing: facing} = _robot) do
     {x, y, facing}
   end
 end
