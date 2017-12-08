@@ -9,8 +9,11 @@ defmodule ToyRobot do
   end
 
   def move(%ToyRobot{position: [x, y], facing: facing} = robot) do
-    case robot do
-      _ -> "kur"
+    case facing do
+      :north -> %ToyRobot{position: [x, y + 1], facing: :north}
+      :east  -> %ToyRobot{position: [x + 1, y], facing: :east}
+      :south -> %ToyRobot{position: [x, y - 1], facing: :south}
+      :west  -> %ToyRobot{position: [x - 1, y], facing: :west}
     end
   end
 

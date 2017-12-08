@@ -24,4 +24,9 @@ defmodule ToyRobotTest do
     robot = ToyRobot.place(2, 2, :north)
     assert ToyRobot.right(robot) == %ToyRobot{facing: :east, position: [2, 2]}
   end
+
+  test "move command" do
+    robot = ToyRobot.place(2, 2, :north)
+    assert ToyRobot.move(robot) == %ToyRobot{facing: :north, position: [2, 3]}
+  end
 end
