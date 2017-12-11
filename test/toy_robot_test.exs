@@ -2,12 +2,13 @@ defmodule ToyRobotTest do
   use ExUnit.Case
   doctest ToyRobot
 
-  test "greets the world" do
-    assert ToyRobot.hello() == :world
-  end
-
   test "place command" do
     assert ToyRobot.place(1, 3, :south) == %ToyRobot{facing: :south, position: [1, 3]}
+  end
+
+  test "out of table coordinates" do
+    #assert ToyRobot.place(4, 7, :south) == "coordinates outside of table"
+    assert_raise(ArgumentError, "coordinates outside of table", ToyRobot.place(4, 7, :south))
   end
 
   test "report command" do
@@ -35,12 +36,12 @@ defmodule ToyRobotTest do
   end
 
   test "a whole sequence of commands" do
-    position = ToyRobot.place(2, 3, :north)
+    position = ToyRobot.place(1, 2, :north)
                |> ToyRobot.move
                |> ToyRobot.move
                |> ToyRobot.right
                |> ToyRobot.move
 
-    assert position == %ToyRobot{facing: :east, position: [3, 5]}
+    assert position == %ToyRobot{facing: :east, position: [2, 4]}
   end
 end

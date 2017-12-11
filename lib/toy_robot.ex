@@ -1,11 +1,15 @@
 defmodule ToyRobot do
   defstruct [position: [], facing: :north]
-  def hello do
-    :world
+
+  @max_x 4
+  @max_y 4
+
+  def place(x, y, facing) when x <= @max_x and y <= @max_y do
+    %ToyRobot{position: [x, y], facing: facing}
   end
 
-  def place(x, y, facing) do
-    %ToyRobot{position: [x, y], facing: facing}
+  def place(x, y, _facing) when x > @max_x or y > @max_y do
+    raise ArgumentError, message: "coordinates outside of table"
   end
 
   def move(%ToyRobot{position: [x, y], facing: facing} = _robot) do
