@@ -7,8 +7,9 @@ defmodule ToyRobotTest do
   end
 
   test "out of table coordinates" do
-    #assert ToyRobot.place(4, 7, :south) == "coordinates outside of table"
-    assert_raise(ArgumentError, "coordinates outside of table", ToyRobot.place(4, 7, :south))
+    assert ToyRobot.place(4, 7, :south) == {:fail, "Invalid coordinates"}
+    assert ToyRobot.place(-1, 4, :south) == {:fail, "Invalid coordinates"}
+    assert ToyRobot.place(5, 5, :south) == {:fail, "Invalid coordinates"}
   end
 
   test "report command" do

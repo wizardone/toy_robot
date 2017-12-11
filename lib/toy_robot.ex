@@ -4,12 +4,12 @@ defmodule ToyRobot do
   @max_x 4
   @max_y 4
 
-  def place(x, y, facing) when x <= @max_x and y <= @max_y do
+  def place(x, y, facing) when x <= @max_x and x >= 0 and y <= @max_y and y >= 0 do
     %ToyRobot{position: [x, y], facing: facing}
   end
 
-  def place(x, y, _facing) when x > @max_x or y > @max_y do
-    raise ArgumentError, message: "coordinates outside of table"
+  def place(x, y, _facing) when x > @max_x or x < 0 or y > @max_y or y < 0 do
+    {:fail, "Invalid coordinates"}
   end
 
   def move(%ToyRobot{position: [x, y], facing: facing} = _robot) do
